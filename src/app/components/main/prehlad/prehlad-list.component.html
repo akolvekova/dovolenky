@@ -1,0 +1,25 @@
+<section id="prehlad">
+    <h1 class="page-header">
+        <span class="h1-text">Prehľad dovoleniek</span>
+        <span class="h1-icons">
+            <a (click)="setPrehladList()" class="glyphicon glyphicon-list h1-icon"
+                [ngClass]="{'h1-icon-border' : prehladList}" title="Zoznam"></a>
+            <a (click)="setPrehladCalendar()" class="glyphicon glyphicon-calendar h1-icon"
+                [ngClass]="{'h1-icon-border' : prehladCalendar}" title="Kalendár"></a>
+        </span>
+    </h1>
+    <div class="page-content">
+        <div *ngIf="prehladList">
+            <app-prehlad-filter (dovolenkaFilterEmitter)="setFilter($event)" (sortByEmitter)="setZoraditPodla($event)"
+                (searchTextEmitter)="setHladanyText($event)">
+            </app-prehlad-filter>
+            <div
+                *ngFor="let dovolenka of dovolenky | filterDovolenky : dovolenkaFilter | sortBy : zoraditPodla | searchText : hladanyText ">
+                <app-prehlad-item [dovolenka]="dovolenka"></app-prehlad-item>
+            </div>
+        </div>
+        <div *ngIf="prehladCalendar">
+            <full-calendar [options]="calendarOptions"></full-calendar>
+        </div>
+    </div>
+</section>

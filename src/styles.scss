@@ -1,0 +1,233 @@
+.panel-default {
+    background-color: #0056511c;
+}
+.panel-footer {
+    background-color: white;
+}
+h1 {
+    text-transform: uppercase;
+}
+label {
+    color: #1f82ab;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.page-content {
+    padding: 0.5em 0em;
+}
+a:hover {
+    cursor: pointer;
+}
+.uppercase {
+    text-transform: uppercase;
+}
+.checkbox label {
+    color: black;
+}
+label > b {
+    color: red;
+}
+.mb-1 {
+    margin-bottom: 1em;
+}
+.has-search .form-control-feedback {
+    right: initial;
+    left: 0;
+    color: #ccc;
+}
+.has-search .form-control {
+    padding-right: 12px;
+    padding-left: 34px;
+}
+.tab-hlav {
+    text-align: center;
+    color: #1f82ab;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.tab-hlav-no-center {
+    color: #1f82ab;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.tab-udaj {
+    text-align: center;
+}
+@media (max-width: 991px) {
+    .tab-udaj {
+        margin-bottom: 0.5em;
+    }
+}
+.tab-akcie {
+    margin-top: 5px;
+    text-align: center;
+}
+.tab-form {
+    padding-top: 0.5em;
+}
+.d-none {
+    display: none;
+}
+.button-w {
+    width: 6em;
+}
+.text-black {
+    color: black;
+}
+.text-gray {
+    color: gray;
+}
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+.padding-poznamka {
+    padding: 3px 20px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #1f82ab;
+}
+#dropdownMenu1,
+#dropdownMenu2 {
+    padding-top: 0em;
+    padding-bottom: 0em;
+    border: 0px;
+}
+.btn-primary:focus,
+.btn-primary.focus {
+    border-color: #155570;
+    outline: 0px;
+}
+.btn-success:focus,
+.btn-success.focus {
+    border-color: #fc63b5;
+    outline: 0px;
+}
+.popover {
+    width: 12em;
+}
+@media (min-width: 768px) {
+    .posun-up {
+        position: relative;
+        top: -0.5em;
+    }
+}
+.a-filter,
+.a-obdobie,
+.a-navbar-no-decor {
+    text-decoration: none;
+}
+.a-filter {
+    color: #fc63b5;
+    font-weight: 600;
+}
+.a-filter:focus,
+.a-filter:active,
+.a-filter:hover {
+    color: #df4296;
+}
+/* .a-filter:focus,
+.a-filter:active,
+.a-filter:hover,
+.a-obdobie:focus,
+.a-obdobie:active,
+.a-obdobie:hover {
+    text-decoration: none;
+} */
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    cursor: auto;
+}
+.navbar-default .navbar-nav > li > .a-navbar-no-decor:hover,
+.navbar-default .navbar-nav > li > .a-navbar-no-decor:focus {
+    color: white;
+    cursor: auto;
+}
+.glyphicon-ok-sign,
+.glyphicon-remove-sign,
+.glyphicon-minus-sign,
+.glyphicon-question-sign,
+.glyphicon-pencil {
+    font-size: 1.5em;
+}
+footer {
+    padding-top: 2em;
+    padding-bottom: 1em;
+}
+.label-pom {
+    margin-bottom: 1em;
+}
+.obdobie {
+    display: inline-block;
+    width: 12em;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f82ab;
+}
+.a-obdobie-left {
+    float: left;
+}
+.a-obdobie-right {
+    float: right;
+}
+.float-r {
+    float: right;
+}
+.fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {
+    min-height: 0em !important;
+}
+.fc td,
+.fc th {
+    background-color: white;
+}
+.fc .fc-scrollgrid {
+    border: 3px solid #3dc4d2 !important;
+    border-radius: 4px !important;
+}
+.fc .fc-daygrid-body-natural .fc-daygrid-day-events {
+    margin-bottom: 0.5em !important;
+}
+.fc-toolbar-title {
+    text-transform: uppercase;
+    font-size: 14px !important;
+    font-weight: 600;
+}
+.fc .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 0.16em !important;
+}
+.fc .fc-button {
+    border: 0px !important;
+    padding: 0px 6px 1px 6px !important;
+}
+.fc .fc-button-primary {
+    background-color: #3dc4d2 !important;
+    border-color: #3dc4d2 !important;
+}
+.fc .fc-button-primary:focus {
+    box-shadow: 0 0 0 0rem rgba(44,62,80,.25) !important;
+}
+.h1-text {
+    padding-right: 1em;
+}
+.h1-icons {
+    white-space: nowrap;
+}
+.h1-icon {
+    font-size: 0.7em;
+    margin-right: 0.4em;
+    color: #fc63b5;
+}
+.h1-icon-border {
+    padding: 4px;
+    border: 3px solid #3dc4d2;
+}
+h1 > span > a:hover {
+    color: #db348d;
+}
+.btn-success:hover {
+    background-image: linear-gradient(#ff7cc2, #db348d 6%, #e670ae);
+}

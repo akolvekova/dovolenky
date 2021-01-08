@@ -1,0 +1,116 @@
+<form autocomplete="off">
+    <div class="row">
+        <div class="col-xs-12">
+            <div *ngIf="!filter" class="form-group obdobie uppercase">
+                <a class="a-obdobie a-obdobie-left" (click)="obdobiePred(); changeFilter();">
+                    <span class="glyphicon glyphicon-triangle-left"></span>
+                </a>
+                {{ obdobieLong }}
+                <a class="a-obdobie a-obdobie-right" (click)="obdobiePo(); changeFilter();">
+                    <span class="glyphicon glyphicon-triangle-right"></span>
+                </a>
+            </div>
+            <div class="form-group float-r uppercase">
+                <a *ngIf="!filter" class="a-filter" (click)="filtrovat();" data-toggle="collapse" href="#collapseFilter"
+                    aria-expanded="false" aria-controls="collapseFilter">
+                    Filter
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                </a>
+                <a *ngIf="filter" class="a-filter" (click)="filtrovat();" data-toggle="collapse" href="#collapseFilter"
+                    aria-expanded="false" aria-controls="collapseFilter">
+                    Filter
+                    <span class="glyphicon glyphicon-menu-down"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="collapse" id="collapseFilter">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Od</label>
+                            <input type="date" [ngModel]="dovolenkaFilter.datumOd | date:'yyyy-MM-dd'"
+                                (ngModelChange)="dovolenkaFilter.datumOd = $event; changeFilter()" class="form-control"
+                                name="datumOd" #datumOd="ngModel">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Do</label>
+                            <input type="date" [ngModel]="dovolenkaFilter.datumDo | date:'yyyy-MM-dd'"
+                                (ngModelChange)="dovolenkaFilter.datumDo = $event; changeFilter()" class="form-control"
+                                name="datumDo" #datumDo="ngModel">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Meno</label>
+                            <select [(ngModel)]="dovolenkaFilter.pouzivatel" (change)="changeFilter()"
+                                class="form-control" name="pouzivatel" #pouzivatel="ngModel">
+                                <option [ngValue]='null' selected>&nbsp;</option>
+                                <option *ngFor="let item of pouzivatelia | sortBy: 'pouzivatel.meno'" [ngValue]='item'>{{ item.priezvisko }} {{ item.meno }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Schvaľuje</label>
+                            <select [(ngModel)]="dovolenkaFilter.schvalovatel" (change)="changeFilter()"
+                                class="form-control" name="schvalovatel" #schvalovatel="ngModel">
+                                <option [ngValue]='null' selected>&nbsp;</option>
+                                <option *ngFor="let item of schvalovatelia | sortBy: 'pouzivatel.meno'" [ngValue]='item'>{{ item.priezvisko }} {{ item.meno }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label>Stav</label>
+                    <ul class="posun-up" name="stav" style="list-style-type:none; padding-inline-start: 0px;">
+                        <li *ngFor="let item of stavyListI; let i = index;">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" [(ngModel)]="stavyListI[i].checked" (change)="changeStav()"
+                                        name="list_name" value="{{ item.stav }}" />
+                                    {{ item.stav }}
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Zoradiť</label>
+                            <select [(ngModel)]="sortBy" (change)="changeSortBy()" class="form-control"
+                                name="sortByEvent" #sortByEvent="ngModel">
+                                <option>Kód</option>
+                                <option>Meno</option>
+                                <option>Termín</option>
+                                <option>Schvaľuje</option>
+                                <option>Stav</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group has-feedback has-search">
+                            <label>Hľadať</label>
+                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            <input type="text" [(ngModel)]="searchText" (keyup)="changeSearchText()"
+                                class="form-control" placeholder="Search" name="searchTextEvent" #searchTextEvent="ngModel">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

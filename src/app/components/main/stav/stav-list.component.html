@@ -1,0 +1,27 @@
+<section id="stav">
+    <h1 class="page-header">Stav dovoleniek</h1>
+    <div class="page-content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group obdobie uppercase">
+                    <a class="a-obdobie a-obdobie-left" (click)="rokPred();">
+                        <span class="glyphicon glyphicon-triangle-left"></span>
+                    </a>
+                    {{ rok }}
+                    <a class="a-obdobie a-obdobie-right" (click)="rokPo();">
+                        <span class="glyphicon glyphicon-triangle-right"></span>
+                    </a>
+                </div>
+                <div class="form-group float-r">
+                    <button (click)="exportAsXLSX()" class="btn btn-success">
+                        Export
+                        <span class="glyphicon glyphicon-export"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div *ngFor="let zaznam of zaznamy">
+            <app-stav-item [zaznam]="zaznam" [isAktRok]="isAktRok"></app-stav-item>
+        </div>
+    </div>
+</section>

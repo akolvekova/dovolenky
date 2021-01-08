@@ -1,0 +1,52 @@
+<section name="nova">
+    <h1 class="page-header">Nová dovolenka</h1>
+    <div class="page-content">
+        <div [hidden]="submitted">
+            <form (ngSubmit)="onSubmit()" #novaForm="ngForm" autocomplete="off">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="datumOd">Dátum od <b>*</b></label>
+                            <input type="date" [ngModel]="nova.datumOd" (ngModelChange)="nova.datumOd = $event"
+                                class="form-control" name="datumOd" #datumOd="ngModel" [min]="today" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="datumDo">Dátum do <b>*</b></label>
+                            <input type="date" [ngModel]="nova.datumDo" (ngModelChange)="nova.datumDo = $event"
+                                class="form-control" name="datumDo" #datumDo="ngModel" [min]="today" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="miesto">Miesto pobytu na dovolenke</label>
+                            <input type="text" [(ngModel)]="nova.miesto" class="form-control" name="miesto">
+                        </div>
+                        <div class="form-group">
+                            <label for="schvalovatel">Schvaľuje <b>*</b></label>
+                            <select [(ngModel)]="nova.schvalovatel" class="form-control" name="schvalovatel"
+                                #schvalovatel="ngModel" required>
+                                <option *ngFor="let item of schvalovatelia | sortBy: 'pouzivatel.meno'" [ngValue]='item'>{{ item.priezvisko }}
+                                    {{ item.meno }}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success button-w"
+                                [disabled]="!novaForm.form.valid">Potvrdiť</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-md-offset-1">
+                        <full-calendar [options]="calendarOptions"></full-calendar>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div [hidden]="!submitted">
+            <form>
+                <div class="alert alert-success" role="alert">
+                    Dovolenka bola zapísaná.
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success button-w" (click)="submitted=false; novaForm.reset()">Ďalšia</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

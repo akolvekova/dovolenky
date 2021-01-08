@@ -1,0 +1,66 @@
+<section name="login">
+    <h1 class="page-header">Prihlásenie</h1>
+    <div class="page-content">
+        <form [formGroup]="authForm" (ngSubmit)="signIn()">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.login.errors }">
+                        <label for="login">Prihlasovacie meno</label>
+                        <input type="email" class="form-control"
+                            [ngClass]="{ 'has-error': isSubmitted && formControls.login.errors }"
+                            formControlName="login">
+                        <div *ngIf="isSubmitted && formControls.login.errors" class="help-block">
+                            <div *ngIf="formControls.login.errors.required">Povinné pole</div>
+                        </div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.heslo.errors }">
+                        <label for="heslo">Heslo</label>
+                        <input type="password" class="form-control" formControlName="heslo">
+                        <div *ngIf="isSubmitted && formControls.heslo.errors" class="help-block">
+                            <div *ngIf="formControls.heslo.errors.required">Povinné pole</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success button-w">Prihlásiť</button>
+                        <div *ngIf="isSubmitted && !valid" class="has-error">
+                            <div class="help-block">Nesprávne prihlasovacie meno alebo heslo!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="form-group">
+            <br><br><br>
+            <div class="row">
+                <div class="col-md-6 text-gray">
+                    <label class="label-pom">Pomôcka pre prihlásenie</label>
+                    <small>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Meno</th>
+                                    <th scope="col">Login a heslo</th>
+                                    <th scope="col">Rola</th>
+                                    <th scope="col">Copy</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of pouzivatelia">
+                                    <td>{{ item.meno }} {{ item.priezvisko }}</td>
+                                    <td>{{ item.login }}</td>
+                                    <td>{{ item.rola }}</td>
+                                    <td>
+                                        <button (click)="copyText(item.login)" class="btn btn-success btn-xs"
+                                            value="click to copy">
+                                            <span class="glyphicon glyphicon-save"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

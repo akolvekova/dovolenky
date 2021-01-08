@@ -1,0 +1,13 @@
+<div class="container">
+
+    <ul *ngIf="authGuard.canActivate(null, null)" class="nav nav-pills uppercase">
+        <li routerLinkActive="active"><a routerLink="prehlad">Prehľad</a></li>
+        <li routerLinkActive="active"><a routerLink="nova">Nová</a></li>
+        <li routerLinkActive="active"><a routerLink="stav">Stav</a></li>
+    </ul>
+
+    <router-outlet></router-outlet>
+
+    <app-messages></app-messages>
+
+</div>

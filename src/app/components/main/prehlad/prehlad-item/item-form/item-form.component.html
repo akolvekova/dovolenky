@@ -1,0 +1,65 @@
+<form (ngSubmit)="onSubmit()" #itemForm="ngForm" autocomplete="off" class="tab-form">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="datumOd">Dátum od <b>*</b></label>
+                <input type="date" [ngModel]="dovolenkaForm.datumOd | date:'yyyy-MM-dd'"
+                    (ngModelChange)="dovolenkaForm.datumOd = $event" class="form-control" name="datumOd"
+                    #datumOd="ngModel" required>
+            </div>
+            <div class="form-group">
+                <label for="datumDo">Dátum do <b>*</b></label>
+                <input type="date" [ngModel]="dovolenkaForm.datumDo | date:'yyyy-MM-dd'"
+                    (ngModelChange)="dovolenkaForm.datumDo = $event" class="form-control" name="datumDo"
+                    #datumDo="ngModel" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="miesto">Miesto pobytu</label>
+                        <input type="text" [(ngModel)]="dovolenkaForm.miesto" class="form-control" name="miesto">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="schvalovatel">Schvaľuje <b>*</b></label>
+                        <select [(ngModel)]="dovolenkaForm.schvalovatel.id" class="form-control" name="schvalovatel"
+                            #schvalovatel="ngModel" required>
+                            <option *ngFor="let item of schvalovatelia" [ngValue]='item.id'>{{ item.priezvisko }} {{ item.meno }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="poznamka">Poznámka</label>
+                <input class="form-control" [(ngModel)]="dovolenkaForm.poznamka" placeholder="Poznámka" name="poznamka">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group" *ngIf="prihlasenyVeduci">
+                <label for="stav">Stav</label>
+                <ul class="posun-up" name="stav" style="list-style-type:none; padding-inline-start: 0px;">
+                    <li *ngFor="let item of stavyList">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" [(ngModel)]="dovolenkaForm.stav" name="list_name"
+                                    value="{{ item }}" />
+                                {{ item }}
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <div class="tab-udaj">
+                <button type="submit" class="btn btn-success" data-toggle="collapse"
+                    [attr.data-target]="'#collapse' + dovolenka.id" [disabled]="!itemForm.form.valid">
+                    <span class="glyphicon glyphicon-save"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

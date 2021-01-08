@@ -1,0 +1,51 @@
+<div class="panel panel-default">
+    <a data-toggle="collapse" [attr.data-target]="'#collapse' + dovolenka.id">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-1">
+                    <div class="tab-hlav">Kód</div>
+                    <div class="tab-udaj">{{ dovolenka.kod }}</div>
+                </div>
+                <div class="col-md-3">
+                    <div class="tab-hlav">Meno</div>
+                    <div class="tab-udaj">{{ dovolenka.pouzivatel.priezvisko }} {{ dovolenka.pouzivatel.meno }}</div>
+                </div>
+                <div class="col-md-3">
+                    <div class="tab-hlav">Termín</div>
+                    <div class="tab-udaj">{{ dovolenka.datumOd | date:'dd.MM.yyyy' }} -
+                        {{ dovolenka.datumDo | date:'dd.MM.yyyy' }} ({{ getDays() }})</div>
+                </div>
+                <div class="col-md-2">
+                    <div class="tab-hlav">Miesto</div>
+                    <div class="tab-udaj">{{ dovolenka.miesto }}</div>
+                </div>
+                <div class="col-md-2">
+                    <div class="tab-hlav">Schvaľuje</div>
+                    <div class="tab-udaj">{{ dovolenka.schvalovatel.priezvisko }} {{ dovolenka.schvalovatel.meno }}
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="tab-hlav">Stav</div>
+                    <div class="tab-udaj">
+                        <span *ngIf="dovolenka.stav == stav.SCHVALENA" class="glyphicon glyphicon-ok-sign text-success"
+                            [title]="stav.SCHVALENA"></span>
+                        <span *ngIf="dovolenka.stav == stav.ZAMIETNUTA"
+                            class="glyphicon glyphicon-remove-sign text-danger" [title]="stav.ZAMIETNUTA"></span>
+                        <span *ngIf="dovolenka.stav == stav.ZRUSENA" class="glyphicon glyphicon-minus-sign text-black"
+                            [title]="stav.ZRUSENA"></span>
+                        <span *ngIf="dovolenka.stav == stav.NESPRACOVANA"
+                            class="glyphicon glyphicon-question-sign text-warning" [title]="stav.NESPRACOVANA"></span>
+                        <!--span *ngIf="!dovolenka.poznamka" class="glyphicon glyphicon-pencil text-gray"></span-->
+                        <span *ngIf="dovolenka.poznamka" class="glyphicon glyphicon-pencil text-info"
+                            [title]="dovolenka.poznamka"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    <div class="collapse" [attr.id]="'collapse' + dovolenka.id">
+        <div class="panel-footer">
+            <app-item-form [dovolenka]="dovolenka"></app-item-form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-2 col-xs-12">
+                <div class="tab-hlav">Meno</div>
+                <div class="tab-udaj">{{ zaznam.pouzivatel.priezvisko }} {{ zaznam.pouzivatel.meno }}</div>
+            </div>
+            <div class="col-md-1 col-xs-12">
+                <div class="tab-hlav">Predch.</div>
+                <div class="tab-udaj">{{ zaznam.pouzivatel.predchadzajuca }}</div>
+            </div>
+            <div class="col-md-1 col-xs-12">
+                <div class="tab-hlav">Nárok</div>
+                <div class="tab-udaj">{{ zaznam.pouzivatel.narok }}</div>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <div class="row">
+                    <div class="col-md-1 col-xs-2">
+                        <div class="tab-hlav">I</div>
+                        <div class="tab-udaj">{{ (!isAktRok || aktMesiac >= 1) ? zaznam.mesiac01 : '' }}</div>
+                    </div>
+                    <div class="col-md-1 col-xs-2">
+                        <div class="tab-hlav">II</div>
+                        <div class="tab-udaj">{{ (!isAktRok || aktMesiac >= 2) ? zaznam.mesiac02 : '' }}</div>
+                    </div>
+                    <div class="col-md-1 col-xs-2">
+                        <div class="tab-hlav">III</div>
+                        <div class="tab-udaj">{{ (!isAktRok || aktMesiac >= 3) ? zaznam.mesiac03 : '' }}</div>
+                    </div>
+                    <div class="col-md-1 col-xs-2">
+                        <div class="tab-hlav">IV</div>
+                        <div class="tab-udaj">{{ (!isAktRok || aktMesiac >= 4) ? zaznam.mesiac04 : '' }}</div>
+                    </div>
+                    <div class="col-md-1 col-xs-2">
+                        <div class="tab-hlav">V</div>
+                        <div class="tab-udaj">{{ (!isAktRok || aktMesiac >= 5) ? zaznam.mesiac05 : '' }}</div>
+                    </div>
+                    <div class="col-md-1 col-xs-2">
+                        <div class="tab-hlav">VI</div>
+                        <div class="tab-udaj">{{ (!isAktRok || aktMesiac >= 6) ? zaznam.mesiac06 : '' }}</div>
+                    </div>
+                    <div class="col-md-1 col-xs-2">
+                        <div class="tab-hlav">VII</div>
+                        <div class="tab-udaj">{{ (!isAktRok || aktMesiac >= 7) ? zaznam.mesiac07 : '' }}</div>
+                    </div>
+                    <div class="col-md-1 col-xs-2">
+                        <div class="tab-hlav">VIII</div>
+                        <div class="tab-udaj">{{ (!isAktRok || aktMesiac >= 8) ? zaznam.mesiac08 : '' }}</div>
+                    </div>
+                    <div class="col-md-1 col-xs-2">
+                        <div class="tab-hlav">IX</div>
+                        <div class="tab-udaj">{{ (!isAktRok || aktMesiac >= 9) ? zaznam.mesiac09 : '' }}</div>
+                    </div>
+                    <div class="col-md-1 col-xs-2">
+                        <div class="tab-hlav">X</div>
+                        <div class="tab-udaj">{{ (!isAktRok || aktMesiac >= 10) ? zaznam.mesiac10 : '' }}</div>
+                    </div>
+                    <div class="col-md-1 col-xs-2">
+                        <div class="tab-hlav">XI</div>
+                        <div class="tab-udaj">{{ (!isAktRok || aktMesiac >= 11) ? zaznam.mesiac11 : '' }}</div>
+                    </div>
+                    <div class="col-md-1 col-xs-2">
+                        <div class="tab-hlav">XII</div>
+                        <div class="tab-udaj">{{ (!isAktRok || aktMesiac === 12) ? zaznam.mesiac12 : '' }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="tab-hlav">Zostatok</div>
+                <div class="tab-udaj">
+                    {{ zaznam.zostatok }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
