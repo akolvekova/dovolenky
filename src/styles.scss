@@ -1,3 +1,6 @@
+.navbar {
+    border-radius: 0px;
+}
 .panel-default {
     background-color: #0056511c;
 }
@@ -17,6 +20,7 @@ label {
 }
 a:hover {
     cursor: pointer;
+    text-decoration: none;
 }
 .uppercase {
     text-transform: uppercase;
@@ -95,16 +99,6 @@ label > b {
     padding-bottom: 0em;
     border: 0px;
 }
-.btn-primary:focus,
-.btn-primary.focus {
-    border-color: #155570;
-    outline: 0px;
-}
-.btn-success:focus,
-.btn-success.focus {
-    border-color: #fc63b5;
-    outline: 0px;
-}
 .popover {
     width: 12em;
 }
@@ -120,13 +114,7 @@ label > b {
     text-decoration: none;
 }
 .a-filter {
-    color: #fc63b5;
     font-weight: 600;
-}
-.a-filter:focus,
-.a-filter:active,
-.a-filter:hover {
-    color: #df4296;
 }
 /* .a-filter:focus,
 .a-filter:active,
@@ -185,7 +173,7 @@ footer {
     background-color: white;
 }
 .fc .fc-scrollgrid {
-    border: 3px solid #3dc4d2 !important;
+    border: 2px solid #00ae8d !important;
     border-radius: 4px !important;
 }
 .fc .fc-daygrid-body-natural .fc-daygrid-day-events {
@@ -204,8 +192,8 @@ footer {
     padding: 0px 6px 1px 6px !important;
 }
 .fc .fc-button-primary {
-    background-color: #3dc4d2 !important;
-    border-color: #3dc4d2 !important;
+    background-color: #00655f !important;
+    border-color: #00655f !important;
 }
 .fc .fc-button-primary:focus {
     box-shadow: 0 0 0 0rem rgba(44,62,80,.25) !important;
@@ -219,11 +207,14 @@ footer {
 .h1-icon {
     font-size: 0.7em;
     margin-right: 0.4em;
-    color: #fc63b5;
 }
 .h1-icon-border {
     padding: 4px;
     border: 3px solid #3dc4d2;
+}
+/* aaa - zaciatok */
+.h1-icon {
+    color: #fc63b5;
 }
 h1 > span > a:hover {
     color: #db348d;
@@ -231,3 +222,25 @@ h1 > span > a:hover {
 .btn-success:hover {
     background-image: linear-gradient(#ff7cc2, #db348d 6%, #e670ae);
 }
+.btn-success:focus,
+.btn-success.focus {
+    border-color: #fc63b5;
+    outline: 0px;
+}
+.a-filter {
+    color: #fc63b5;
+}
+.a-filter:focus,
+.a-filter:active,
+.a-filter:hover {
+    color: #df4296;
+}
+.fc .fc-scrollgrid {
+    border: 2px solid #3dc4d2 !important;
+    border-radius: 4px !important;
+}
+.fc .fc-button-primary {
+    background-color: #3dc4d2 !important;
+    border-color: #3dc4d2 !important;
+}
+/* aaa - koniec */
