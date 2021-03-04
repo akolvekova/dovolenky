@@ -87,7 +87,7 @@ export class PrehladListComponent implements OnInit {
                 this.dovolenky.push(item);
                 events.push(
                     {
-                        title: item.pouzivatel.priezvisko,
+                        title: item.pouzivatel.priezvisko + " " + item.pouzivatel.meno,
                         start: this.datepipe.transform(item.datumOd, 'yyyy-MM-dd'),
                         end: this.datepipe.transform((new Date(item.datumDo).getTime() + 1000 * 3600 * 24), 'yyyy-MM-dd'),
                         color: eventColor

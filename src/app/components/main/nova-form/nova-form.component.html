@@ -5,15 +5,21 @@
             <form (ngSubmit)="onSubmit()" #novaForm="ngForm" autocomplete="off">
                 <div class="row">
                     <div class="col-md-5">
-                        <div class="form-group">
-                            <label for="datumOd">Dátum od <b>*</b></label>
-                            <input type="date" [ngModel]="nova.datumOd" (ngModelChange)="nova.datumOd = $event"
-                                class="form-control" name="datumOd" #datumOd="ngModel" [min]="today" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="datumDo">Dátum do <b>*</b></label>
-                            <input type="date" [ngModel]="nova.datumDo" (ngModelChange)="nova.datumDo = $event"
-                                class="form-control" name="datumDo" #datumDo="ngModel" [min]="today" required>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="datumOd">Dátum od <b>*</b></label>
+                                    <input type="date" [ngModel]="nova.datumOd" (ngModelChange)="nova.datumOd = $event"
+                                        class="form-control" name="datumOd" #datumOd="ngModel" [min]="today" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="datumDo">Dátum do <b>*</b></label>
+                                    <input type="date" [ngModel]="nova.datumDo" (ngModelChange)="nova.datumDo = $event"
+                                        class="form-control" name="datumDo" #datumDo="ngModel" [min]="today" required>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="miesto">Miesto pobytu na dovolenke</label>
@@ -23,7 +29,8 @@
                             <label for="schvalovatel">Schvaľuje <b>*</b></label>
                             <select [(ngModel)]="nova.schvalovatel" class="form-control" name="schvalovatel"
                                 #schvalovatel="ngModel" required>
-                                <option *ngFor="let item of schvalovatelia | sortBy: 'pouzivatel.meno'" [ngValue]='item'>{{ item.priezvisko }}
+                                <option *ngFor="let item of schvalovatelia | sortBy: 'pouzivatel.meno'"
+                                    [ngValue]='item'>{{ item.priezvisko }}
                                     {{ item.meno }}</option>
                             </select>
                         </div>

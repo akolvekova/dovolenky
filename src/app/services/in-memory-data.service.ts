@@ -85,7 +85,7 @@ export class InMemoryDataService implements InMemoryDbService {
             {
                 id: 8,
                 login: 'StankaZ',
-                heslo: 'StankaY',
+                heslo: 'StankaZ',
                 priezvisko: 'Zelená',
                 meno: 'Stanislava',
                 rola: PouzivatelRola.PRACOVNIK,
@@ -544,6 +544,50 @@ export class InMemoryDataService implements InMemoryDbService {
                 miesto: 'KE',
                 schvalovatelId: 1,
                 stav: DovolenkaStav.SCHVALENA,
+                poznamka: null
+            },
+            {
+                id: 42,
+                kod: '210201:1',
+                pouzivatelId: 1,
+                datumOd: new Date('2021-02-01'),
+                datumDo: new Date('2021-02-01'),
+                miesto: 'KE',
+                schvalovatelId: 1,
+                stav: DovolenkaStav.SCHVALENA,
+                poznamka: null
+            },
+            {
+                id: 43,
+                kod: '210205:3',
+                pouzivatelId: 3,
+                datumOd: new Date('2021-02-05'),
+                datumDo: new Date('2021-02-05'),
+                miesto: 'KE',
+                schvalovatelId: 3,
+                stav: DovolenkaStav.SCHVALENA,
+                poznamka: null
+            },
+            {
+                id: 44,
+                kod: '210208:4',
+                pouzivatelId: 4,
+                datumOd: new Date('2021-02-08'),
+                datumDo: new Date('2021-02-09'),
+                miesto: 'KE',
+                schvalovatelId: 1,
+                stav: DovolenkaStav.SCHVALENA,
+                poznamka: null
+            },
+            {
+                id: 45,
+                kod: '210222:8',
+                pouzivatelId: 8,
+                datumOd: new Date('2021-02-22'),
+                datumDo: new Date('2021-02-26'),
+                miesto: 'KE',
+                schvalovatelId: 1,
+                stav: DovolenkaStav.NESPRACOVANA,
                 poznamka: null
             }
         ];

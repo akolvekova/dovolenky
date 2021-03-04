@@ -6,6 +6,7 @@ import { ExcelExportService } from 'src/app/services/excel-export.service';
 import { Zaznam } from 'src/app/data-model/zaznam';
 import { Dovolenka } from 'src/app/data-model/dovolenka';
 import { DateFormatPipe } from 'src/app/pipes/date-format.pipe';
+import { DovolenkaStav } from 'src/app/data-model/dovolenka-stav-enum';
 
 @Component({
     selector: 'app-stav-list',
@@ -44,7 +45,8 @@ export class StavListComponent implements OnInit {
                 zaznam.pouzivatel = pouzivatelItem;
                 d.filter(dovolenkaItem => (dovolenkaItem.pouzivatelId === pouzivatelItem.id
                     && this.dateFormatPipe.transform(dovolenkaItem.datumOd) >= this.dovolenkaFilter.datumOd
-                    && this.dateFormatPipe.transform(dovolenkaItem.datumDo) <= this.dovolenkaFilter.datumDo))
+                    && this.dateFormatPipe.transform(dovolenkaItem.datumDo) <= this.dovolenkaFilter.datumDo
+                    && dovolenkaItem.stav == DovolenkaStav.SCHVALENA))
                     .forEach(dovolenkaItem => {
                         const days = this.dovolenkaService.getDays(dovolenkaItem.datumOd, dovolenkaItem.datumDo);
                         switch (new Date(dovolenkaItem.datumOd).getMonth()) {

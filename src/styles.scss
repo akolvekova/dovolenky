@@ -7,6 +7,15 @@
 .panel-footer {
     background-color: white;
 }
+.table {
+    background-color: white;
+}
+thead {
+    background-color: #eeeeee;
+}
+.table tbody tr td {
+    padding: 6px;
+}
 h1 {
     text-transform: uppercase;
 }
@@ -56,6 +65,7 @@ label > b {
 }
 .tab-udaj {
     text-align: center;
+    color: black;
 }
 @media (max-width: 991px) {
     .tab-udaj {
@@ -113,6 +123,9 @@ label > b {
 .a-navbar-no-decor {
     text-decoration: none;
 }
+.a-navbar-logout {
+    width: 11rem;
+}
 .a-filter {
     font-weight: 600;
 }
@@ -143,9 +156,6 @@ label > b {
 footer {
     padding-top: 2em;
     padding-bottom: 1em;
-}
-.label-pom {
-    margin-bottom: 1em;
 }
 .obdobie {
     display: inline-block;

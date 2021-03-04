@@ -19,7 +19,7 @@
         <div *ngIf="authGuard.canActivate(null, null)" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><a class="a-navbar-no-decor">{{ authService.currentUser() }}</a></li>
-                <li><a href="#" (click)="logout()"><span class="glyphicon glyphicon-off"></span>&nbsp;Odhlásiť</a></li>
+                <li><a class="a-navbar-logout" href="#" (click)="logout()"><span class="glyphicon glyphicon-off"></span>&nbsp;Odhlásiť</a></li>
             </ul>
         </div>
     </div>
