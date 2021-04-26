@@ -15,7 +15,7 @@ const routes: Routes = [
     { path: 'nova', component: NovaFormComponent, canActivate: [AuthGuard] },
     { path: 'stav', component: StavListComponent, canActivate: [AuthGuard] },
     //{ path: '**', component: NotFoundComponent }
-    { path: '**', pathMatch: 'full', redirectTo: 'login' }
+    { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({
