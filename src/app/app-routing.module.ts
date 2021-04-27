@@ -14,12 +14,11 @@ const routes: Routes = [
     { path: 'prehlad', component: PrehladListComponent, canActivate: [AuthGuard] },
     { path: 'nova', component: NovaFormComponent, canActivate: [AuthGuard] },
     { path: 'stav', component: StavListComponent, canActivate: [AuthGuard] },
-    //{ path: '**', component: NotFoundComponent }
-    { path: '**', redirectTo: 'index' }
+    { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, { useHash: true })],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }
