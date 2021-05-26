@@ -5,12 +5,76 @@ import { Dovolenka } from '../data-model/dovolenka';
 import { Pouzivatel } from '../data-model/pouzivatel';
 import { DovolenkaStav } from '../data-model/dovolenka-stav-enum';
 import { PouzivatelRola } from '../data-model/pouzivatel-rola-enum';
+import { Sviatok } from '../data-model/sviatok';
 
 @Injectable({
     providedIn: 'root',
 })
 export class InMemoryDataService implements InMemoryDbService {
     createDb(): {} {
+        const sviatky: Sviatok[] = [
+            {
+                id: 1,
+                datum:  new Date('2021-01-01')
+            },
+            {
+                id: 2,
+                datum:  new Date('2021-01-06')
+            },
+            {
+                id: 3,
+                datum:  new Date('2021-04-02')
+            },
+            {
+                id: 4,
+                datum:  new Date('2021-04-05')
+            },
+            {
+                id: 5,
+                datum:  new Date('2021-05-01')
+            },
+            {
+                id: 6,
+                datum:  new Date('2021-05-08')
+            },
+            {
+                id: 7,
+                datum:  new Date('2021-07-05')
+            },
+            {
+                id: 8,
+                datum:  new Date('2021-08-29')
+            },
+            {
+                id: 9,
+                datum:  new Date('2021-09-01')
+            },
+            {
+                id: 10,
+                datum:  new Date('2021-09-15')
+            },
+            {
+                id: 11,
+                datum:  new Date('2021-11-01')
+            },
+            {
+                id: 12,
+                datum:  new Date('2021-11-17')
+            },
+            {
+                id: 13,
+                datum:  new Date('2021-12-24')
+            },
+            {
+                id: 14,
+                datum:  new Date('2021-12-25')
+            },
+            {
+                id: 15,
+                datum:  new Date('2021-12-26')
+            }
+        ];
+
         const pouzivatelia: Pouzivatel[] = [
             {
                 id: 1,
@@ -589,13 +653,112 @@ export class InMemoryDataService implements InMemoryDbService {
                 schvalovatelId: 1,
                 stav: DovolenkaStav.NESPRACOVANA,
                 poznamka: null
+            },
+            {
+                id: 46,
+                kod: '210401:1',
+                pouzivatelId: 1,
+                datumOd: new Date('2021-04-01'),
+                datumDo: new Date('2021-04-06'),
+                miesto: 'KE',
+                schvalovatelId: 1,
+                stav: DovolenkaStav.SCHVALENA,
+                poznamka: null
+            },
+            {
+                id: 47,
+                kod: '210409:3',
+                pouzivatelId: 3,
+                datumOd: new Date('2021-04-09'),
+                datumDo: new Date('2021-04-09'),
+                miesto: 'KE',
+                schvalovatelId: 3,
+                stav: DovolenkaStav.SCHVALENA,
+                poznamka: null
+            },
+            {
+                id: 48,
+                kod: '210429:4',
+                pouzivatelId: 4,
+                datumOd: new Date('2021-04-29'),
+                datumDo: new Date('2021-04-30'),
+                miesto: 'KE',
+                schvalovatelId: 1,
+                stav: DovolenkaStav.NESPRACOVANA,
+                poznamka: null
+            },
+            {
+                id: 49,
+                kod: '210505:5',
+                pouzivatelId: 5,
+                datumOd: new Date('2021-05-05'),
+                datumDo: new Date('2021-05-05'),
+                miesto: 'KE',
+                schvalovatelId: 1,
+                stav: DovolenkaStav.SCHVALENA,
+                poznamka: null
+            },
+            {
+                id: 50,
+                kod: '210510:8',
+                pouzivatelId: 8,
+                datumOd: new Date('2021-05-10'),
+                datumDo: new Date('2021-05-10'),
+                miesto: 'Kežmarok',
+                schvalovatelId: 1,
+                stav: DovolenkaStav.SCHVALENA,
+                poznamka: null
+            },
+            {
+                id: 51,
+                kod: '210512:5',
+                pouzivatelId: 5,
+                datumOd: new Date('2021-05-12'),
+                datumDo: new Date('2021-05-17'),
+                miesto: 'KE',
+                schvalovatelId: 1,
+                stav: DovolenkaStav.NESPRACOVANA,
+                poznamka: null
+            },
+            {
+                id: 52,
+                kod: '210512:7',
+                pouzivatelId: 7,
+                datumOd: new Date('2021-05-12'),
+                datumDo: new Date('2021-05-14'),
+                miesto: 'Ke',
+                schvalovatelId: 3,
+                stav: DovolenkaStav.NESPRACOVANA,
+                poznamka: null
+            },
+            {
+                id: 53,
+                kod: '210514:2',
+                pouzivatelId: 1,
+                datumOd: new Date('2021-05-14'),
+                datumDo: new Date('2021-05-14'),
+                miesto: 'HU',
+                schvalovatelId: 1,
+                stav: DovolenkaStav.NESPRACOVANA,
+                poznamka: null
+            },
+            {
+                id: 54,
+                kod: '210517:6',
+                pouzivatelId: 6,
+                datumOd: new Date('2021-05-17'),
+                datumDo: new Date('2021-05-19'),
+                miesto: 'Prešov',
+                schvalovatelId: 2,
+                stav: DovolenkaStav.SCHVALENA,
+                poznamka: null
             }
         ];
 
         const users: User[] = [
         ];
 
-        return { dovolenky, pouzivatelia, users };
+        return { dovolenky, pouzivatelia, users, sviatky };
     }
 
     genId(dovolenky: Dovolenka[]): number {

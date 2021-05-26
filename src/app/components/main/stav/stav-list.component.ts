@@ -46,7 +46,7 @@ export class StavListComponent implements OnInit {
                 d.filter(dovolenkaItem => (dovolenkaItem.pouzivatelId === pouzivatelItem.id
                     && this.dateFormatPipe.transform(dovolenkaItem.datumOd) >= this.dovolenkaFilter.datumOd
                     && this.dateFormatPipe.transform(dovolenkaItem.datumDo) <= this.dovolenkaFilter.datumDo
-                    && dovolenkaItem.stav == DovolenkaStav.SCHVALENA))
+                    && dovolenkaItem.stav === DovolenkaStav.SCHVALENA))
                     .forEach(dovolenkaItem => {
                         const days = this.dovolenkaService.getDays(dovolenkaItem.datumOd, dovolenkaItem.datumDo);
                         switch (new Date(dovolenkaItem.datumOd).getMonth()) {

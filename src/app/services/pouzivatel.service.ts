@@ -33,15 +33,6 @@ export class PouzivatelService {
             );
     }
 
-    // getPouzivateliaMap(): Observable<number, Pouzivatel[]> {
-    //     return this.http.get<Pouzivatel[]>(this.pouzivateliaUrl)
-    //         .pipe(
-    //             map
-    //             // tap(_ => this.log('fetched pouzivatelia')),
-    //             catchError(this.handleError<Pouzivatel[]>('getPouzivatelia', []))
-    //         );
-    // }
-
     getSchvalovatelia(): Observable<Pouzivatel[]> {
         const term = PouzivatelRola.VEDUCI;
         if (!term.trim()) {
@@ -71,9 +62,7 @@ export class PouzivatelService {
             return of();
         }
 
-        // const url = `${this.pouzivateliaUrl}/?login=${login}&heslo=${heslo}`;
         const url = `${this.pouzivateliaUrl}?login=${user.login}&heslo=${user.heslo}`;
-        console.log(url);
         return this.http.get<Pouzivatel[]>(url)
             .pipe(
                 // tap(_ => this.log(`fetched pouzivatelia id=${id}`)),

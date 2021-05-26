@@ -23,6 +23,7 @@ import { StavItemComponent } from './components/main/stav/stav-item/stav-item.co
 import { NotFoundComponent } from './components/main/not-found/not-found.component';
 import { DovolenkaService } from './services/dovolenka.service';
 import { PouzivatelService } from './services/pouzivatel.service';
+import { SviatokService } from './services/sviatok.service';
 import { ExcelExportService } from './services/excel-export.service';
 import { MessagesComponent } from './components/main/messages/messages.component';
 import { ItemFormComponent } from './components/main/prehlad/prehlad-item/item-form/item-form.component';
@@ -76,6 +77,7 @@ FullCalendarModule.registerPlugins([
         DateFormatPipe,
         DovolenkaService,
         PouzivatelService,
+        SviatokService,
         ExcelExportService
     ],
     bootstrap: [AppComponent]

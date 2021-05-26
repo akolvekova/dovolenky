@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
-import { catchError} from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 import { MessageService } from './message.service';
 import { Dovolenka } from '../data-model/dovolenka';
-import { DateFormatPipe } from '../pipes/date-format.pipe';
+import { SviatokService } from './sviatok.service';
 
 @Injectable({
     providedIn: 'root'
@@ -21,8 +21,8 @@ export class DovolenkaService {
 
     constructor(
         private http: HttpClient,
-        private dateFormatPipe: DateFormatPipe,
-        private messageService: MessageService
+        private messageService: MessageService,
+        private sviatokService: SviatokService
     ) { }
 
     getDovolenky(): Observable<Dovolenka[]> {
@@ -60,14 +60,14 @@ export class DovolenkaService {
 
     getDays(datumOd: Date, datumDo: Date): number {
         let numWorkDays = 0;
-        const firstDate = this.dateFormatPipe.transform(datumOd);
-        const lastDate = this.dateFormatPipe.transform(datumDo);
-        let currentDate = firstDate;
-        while (currentDate <= lastDate) {
-            if (new Date(currentDate).getDay() !== 0 && new Date(currentDate).getDay() !== 6) {
+        const firstDate = new Date(datumOd);
+        const lastDate = new Date(datumDo);
+        let actDate = firstDate;
+        while (actDate <= lastDate) {
+            if (actDate.getDay() !== 0 && actDate.getDay() !== 6 && !this.sviatokService.isSviatok(actDate)) {
                 numWorkDays++;
             }
-            currentDate = this.dateFormatPipe.transform(new Date(new Date(currentDate).getTime() + 1000 * 3600 * 24));
+            actDate = new Date(actDate.getTime() + 1000 * 3600 * 24);
         }
         return numWorkDays;
     }

@@ -3,7 +3,6 @@ import { Dovolenka } from '../../../../data-model/dovolenka';
 import { DovolenkaStav } from '../../../../data-model/dovolenka-stav-enum';
 import { DateFormatPipe } from 'src/app/pipes/date-format.pipe';
 import { DovolenkaService } from 'src/app/services/dovolenka.service';
-import { PouzivatelService } from 'src/app/services/pouzivatel.service';
 
 @Component({
     selector: 'app-prehlad-item',
@@ -19,8 +18,7 @@ export class PrehladItemComponent implements OnInit {
 
     constructor(
         private dateFormatPipe: DateFormatPipe,
-        private dovolenkaService: DovolenkaService,
-        private pouzivatelService: PouzivatelService
+        private dovolenkaService: DovolenkaService
     ) { }
 
     ngOnInit(): void {
@@ -31,13 +29,5 @@ export class PrehladItemComponent implements OnInit {
     getDays(): number {
         return this.dovolenkaService.getDays(this.dovolenka.datumOd, this.dovolenka.datumDo);
     }
-
-    // upravit(): void {
-    //     this.upravy = (this.upravy ? false : true);
-    // }
-
-    // getPovoleneUpravy(upravy: boolean): void {
-    //     this.upravy = upravy;
-    // }
 
 }

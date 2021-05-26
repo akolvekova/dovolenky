@@ -87,10 +87,19 @@ export class PrehladListComponent implements OnInit {
                 this.dovolenky.push(item);
                 events.push(
                     {
-                        title: item.pouzivatel.priezvisko + " " + item.pouzivatel.meno,
+                        title: item.pouzivatel.priezvisko + ' ' + item.pouzivatel.meno,
                         start: this.datepipe.transform(item.datumOd, 'yyyy-MM-dd'),
                         end: this.datepipe.transform((new Date(item.datumDo).getTime() + 1000 * 3600 * 24), 'yyyy-MM-dd'),
                         color: eventColor
+                    }
+                );
+            });
+            localStorage.getItem('SVIATKY').split(' ').forEach(item => {
+                events.push(
+                    {
+                        start: this.datepipe.transform(item, 'yyyy-MM-dd'),
+                        end: this.datepipe.transform(item, 'yyyy-MM-dd'),
+                        display: 'background'
                     }
                 );
             });
@@ -98,72 +107,16 @@ export class PrehladListComponent implements OnInit {
         });
     }
 
-    // getDovolenkyList(): void {
-    //     this.dovolenky = [];
-    //     this.dovolenkaService.getDovolenky()
-    //         .subscribe(items => {
-    //             items.forEach(item => {
-    //                 forkJoin([
-    //                     this.pouzivatelService.getPouzivatel(item.pouzivatelId),
-    //                     this.pouzivatelService.getPouzivatel(item.schvalovatelId)
-    //                 ]).subscribe(([p, s]) => {
-    //                     item.pouzivatel = p;
-    //                     item.schvalovatel = s;
-    //                     this.dovolenky.push(item);
-    //                 });
-    //             });
-    //             // this.dovolenky = items;
-    //         });
-    // }
-
-    // getDovolenkyCalendar(): void {
-    //     forkJoin([
-    //         this.dovolenkaService.getDovolenky(),
-    //         this.pouzivatelService.getPouzivatelia()
-    //     ]).subscribe(([d, p]) => {
-    //         const events = [];
-    //         d.forEach((item) => {
-    //             let eventColor = '';
-    //             switch (item.stav) {
-    //                 case DovolenkaStav.NESPRACOVANA: eventColor = '#e67300'; break;
-    //                 case DovolenkaStav.SCHVALENA: eventColor = '#fc63b5'; break;
-    //                 case DovolenkaStav.ZAMIETNUTA: eventColor = '#d50000'; break;
-    //                 case DovolenkaStav.ZRUSENA: eventColor = '#000000'; break;
-    //                 default: break;
-    //             }
-    //             let priezvisko = '';
-    //             for (const pItem of p) {
-    //                 if (pItem.id === item.pouzivatelId) {
-    //                     priezvisko = pItem.priezvisko;
-    //                     break;
-    //                 }
-    //             }
-    //             events.push(
-    //                 {
-    //                     title: priezvisko,
-    //                     start: this.datepipe.transform(item.datumOd, 'yyyy-MM-dd'),
-    //                     end: this.datepipe.transform((new Date(item.datumDo).getTime() + 1000 * 3600 * 24), 'yyyy-MM-dd'),
-    //                     color: eventColor
-    //                 }
-    //             );
-    //         });
-    //         this.calendarOptions.events = events;
-    //     });
-    // }
-
     setPrehladList(): void {
-        // this.getDovolenkyList();
         localStorage.setItem('PREHLAD', 'list');
         this.prehladList = true;
         this.prehladCalendar = false;
     }
 
     setPrehladCalendar(): void {
-        this.getDovolenky();
         localStorage.setItem('PREHLAD', 'calendar');
         this.prehladList = false;
         this.prehladCalendar = true;
-        //    this.getDovolenky();
     }
 
     setFilter(dovolenka: Dovolenka): void {

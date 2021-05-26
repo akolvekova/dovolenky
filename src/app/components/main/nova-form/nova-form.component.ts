@@ -42,6 +42,10 @@ export class NovaFormComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.getDovolenky();
+    }
+
+    getDovolenky(): void {
         const pouzivatel = JSON.parse(localStorage.getItem('POUZIVATEL')) as Pouzivatel;
         this.nova.pouzivatelId = pouzivatel.id;
         this.pouzivatelService.getSchvalovatelia()
@@ -63,11 +67,20 @@ export class NovaFormComponent implements OnInit {
                             {
                                 title: pouzivatel.priezvisko,
                                 start: this.datepipe.transform(item.datumOd, 'yyyy-MM-dd'),
-                                end: this.datepipe.transform((new Date(item.datumDo).getTime() + 1000 * 3600 * 24), 'yyyy-MM-dd'),
+                                end: this.datepipe.transform(item.datumDo, 'yyyy-MM-dd'),
                                 color: eventColor
                             }
                         );
                     }
+                });
+                localStorage.getItem('SVIATKY').split(' ').forEach(item => {
+                    events.push(
+                        {
+                            start: this.datepipe.transform(item, 'yyyy-MM-dd'),
+                            end: this.datepipe.transform(item, 'yyyy-MM-dd'),
+                            display: 'background'
+                        }
+                    );
                 });
                 this.calendarOptions.events = events;
             });
