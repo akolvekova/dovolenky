@@ -67,7 +67,7 @@ export class NovaFormComponent implements OnInit {
                             {
                                 title: pouzivatel.priezvisko,
                                 start: this.datepipe.transform(item.datumOd, 'yyyy-MM-dd'),
-                                end: this.datepipe.transform(item.datumDo, 'yyyy-MM-dd'),
+                                end: this.datepipe.transform((new Date(item.datumDo).getTime() + 1000 * 3600 * 24), 'yyyy-MM-dd'),
                                 color: eventColor
                             }
                         );

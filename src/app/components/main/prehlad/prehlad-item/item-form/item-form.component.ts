@@ -17,13 +17,13 @@ import { PouzivatelRola } from 'src/app/data-model/pouzivatel-rola-enum';
 export class ItemFormComponent implements OnInit {
 
     @Input() dovolenka: Dovolenka;
-    @Output() povoleneUpravy =  new EventEmitter<boolean>();
+    @Output() povoleneUpravy = new EventEmitter<boolean>();
     dovolenkaForm: Dovolenka = new Dovolenka();
     prihlasenyVeduci = false;
     schvalovatelia: Array<Pouzivatel>;
     stavyList: DovolenkaStav[] = Object.values(DovolenkaStav)
     submitted = false;
-
+    
     constructor(
         private pouzivatelService: PouzivatelService,
         private dovolenkaService: DovolenkaService,
@@ -39,7 +39,7 @@ export class ItemFormComponent implements OnInit {
 
     onSubmit(): void {
         this.dovolenkaFormToDovolenka();
-        this.save();
+        // this.save();
         this.submitted = true;
         this.povoleneUpravy.emit(false);
     }
@@ -54,6 +54,7 @@ export class ItemFormComponent implements OnInit {
         this.dovolenkaForm.datumDo = this.dovolenka.datumDo;
         this.dovolenkaForm.miesto = this.dovolenka.miesto;
         this.dovolenkaForm.schvalovatel = this.dovolenka.schvalovatel;
+        this.dovolenkaForm.schvalovatelId = this.dovolenka.schvalovatel.id;
         this.dovolenkaForm.poznamka = this.dovolenka.poznamka;
         this.dovolenkaForm.stav = this.dovolenka.stav;
     }
@@ -62,11 +63,14 @@ export class ItemFormComponent implements OnInit {
         this.dovolenka.datumOd = this.dovolenkaForm.datumOd;
         this.dovolenka.datumDo = this.dovolenkaForm.datumDo;
         this.dovolenka.miesto = this.dovolenkaForm.miesto;
-        this.pouzivatelService.getPouzivatel(this.dovolenkaForm.schvalovatel.id)
-             .subscribe(pouzivatel => this.dovolenka.schvalovatel = pouzivatel);
         this.dovolenka.poznamka = this.dovolenkaForm.poznamka;
         this.dovolenka.stav = this.dovolenkaForm.stav;
         this.dovolenka.kod = this.datepipe.transform(this.dovolenka.datumOd, 'yyMMdd') + ':' + this.dovolenka.pouzivatelId;
+        this.pouzivatelService.getPouzivatel(this.dovolenkaForm.schvalovatelId)
+            .subscribe(pouzivatel => {
+                this.dovolenka.schvalovatel = pouzivatel;
+                this.save();
+            });
     }
 
 }
